@@ -42,7 +42,17 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	public Boolean login(String email, String password) {
+		// TODO Auto-generated method stub
+		User user = userRepository.findByEmail(email);
+		if(user.getPassword() == password)
+			return true;
+		return false;
+	}
+
+	@Override
 	public User findById(Long userId) {
 		return userRepository.findOne(userId);
 	}
+
 }

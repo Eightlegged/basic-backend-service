@@ -7,4 +7,5 @@ public interface UserService {
 	User findByEmail(String email);
 	User findByUsername(String username);
 	Boolean createUser(String username, String email, String password);
+	Boolean login(String email, String password);
 }
