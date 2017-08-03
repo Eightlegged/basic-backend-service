@@ -27,12 +27,14 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Boolean createUser(String userName, String email, String password) {
+		// Role 입력 받을 경우 - (String userName, String email, String Password, Role Role)
 		if (findByEmail(email) == null && findByUsername(userName) == null) {
 			User user = new User();
 			user.setEmail(email);
 			user.setName(userName);
 			user.setPassword(password);
-			user.setRole(Role.USER); //Master? 
+			user.setRole(Role.USER); // Master?
+			// Role 입력받을 경우 - user.setRole(Role);
 			userRepository.save(user);
 			return true;
 		}
