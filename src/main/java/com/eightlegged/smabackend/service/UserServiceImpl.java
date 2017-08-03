@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
 			user.setEmail(email);
 			user.setName(userName);
 			user.setPassword(password);
-			user.setRole(Role.USER); //Master?
+			user.setRole(Role.USER); //Master? 
 			userRepository.save(user);
 			return true;
 		}
