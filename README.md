@@ -1,8 +1,8 @@
 # Basic Back-End Service
 
-Smart Meeting Assistant 어플리케이션의 Spring Boot 기반 Basic Back-End 서비스 2(Meeting Service)
-
-
+Smart Meeting Assistant 어플리케이션의 Spring Boot 기반 Basic Back-End 서비스
+* User Service
+* Meeting Service
 
 ### 사용 프레임워크(런타임 및 버전 상세 필요)
 * Spring-Boot 1.5.7
