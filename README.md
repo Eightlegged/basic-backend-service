@@ -19,7 +19,7 @@ java -jar 파일명.jar
 >> JSON 포멧으로 POST\
 >> {"id":"1", 	"email":"heehouse1@gmail.com", "userName":"Saeyoung","password":"test123" } \
 > 로그인
->> lovalhost:8080/user/login\
+>> localhost:8080/user/login\
 >> JSON 포멧으로 POST
 
 ### 기능 (추 후 추가 가능)
