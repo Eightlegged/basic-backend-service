@@ -9,8 +9,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+/**
+ * @author Kim Sae-Young(heehouse1@gmail.com)
+ *
+ * @FileName Meeting.java
+ * @Project smabackend
+ * @Date 2017. 8. 5.
+ */
 
 @Entity
 @Table(name = "meeting")
@@ -36,7 +44,7 @@ public class Meeting {
     @Column
     private Date endDate;
 
-    @ManyToOne
+    @ManyToMany
     @JoinColumn(name = "user_id")
     private User user;
     

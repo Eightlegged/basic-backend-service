@@ -10,6 +10,15 @@ import org.springframework.web.bind.annotation.RestController;
 import com.eightlegged.smabackend.entity.Meeting;
 import com.eightlegged.smabackend.service.MeetingService;
 
+
+/**
+ * @author Kim Sae-Young(heehouse1@gmail.com)
+ *
+ * @FileName MeetingController.java
+ * @Project smabackend
+ * @Date 2017. 8. 5.
+ */
+
 @RestController
 public class MeetingController {
 	
