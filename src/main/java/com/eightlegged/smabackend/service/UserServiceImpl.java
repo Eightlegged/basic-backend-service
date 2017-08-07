@@ -1,8 +1,6 @@
 package com.eightlegged.smabackend.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.eightlegged.smabackend.entity.Role;
@@ -28,7 +26,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public ResponseEntity<String> createUser(String userName, String email, String password) {
+	public String createUser(String userName, String email, String password) {
 		// Role 입력 받을 경우 - (String userName, String email, String Password, Role Role)
 		if (findByEmail(email) == null && findByUsername(userName) == null) {
 			User user = new User();
@@ -38,18 +36,18 @@ public class UserServiceImpl implements UserService {
 			user.setRole(Role.USER); // Master?
 			// Role 입력받을 경우 - user.setRole(Role);
 			userRepository.save(user);
-			return new ResponseEntity<String>("{\"message\": \"SUCCESS\"}", HttpStatus.CREATED);
+			return "{\"message\": \"SUCCESS\"}";
 		}
-		return new ResponseEntity<String>("{\"message\":\"FAIL\"}", HttpStatus.BAD_REQUEST);
+		return "{\"message\":\"FAIL\"}";
 	}
 
 	@Override
-	public ResponseEntity<String> login(String email, String password) {
+	public String login(String email, String password) {
 		// TODO Auto-generated method stub
 		User user = userRepository.findByEmail(email);
 		if(user.getPassword() == password)
-			return new ResponseEntity<String>("{\"message\": \"SUCCESS\"}", HttpStatus.OK);
-		return new ResponseEntity<String>("{\"message\":\"FAIL\"}", HttpStatus.BAD_REQUEST);
+			return "{\"message\": \"SUCCESS\"}";
+		return "{\"message\":\"FAIL\"}";
 	}
 
 	@Override

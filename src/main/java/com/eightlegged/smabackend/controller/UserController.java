@@ -2,7 +2,6 @@ package com.eightlegged.smabackend.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,7 +21,7 @@ public class UserController {
 			value="/user/add", method=RequestMethod.POST, 
 			consumes= {MediaType.APPLICATION_JSON_VALUE},
 			produces= {MediaType.APPLICATION_JSON_VALUE})
-	public ResponseEntity<String> createUser(@RequestBody User user){
+	public String createUser(@RequestBody User user){
 		return userservice.createUser(user.getUserName(), user.getEmail(),user.getPassword());
 	}
 	
@@ -31,7 +30,7 @@ public class UserController {
 			method=RequestMethod.POST,
 			consumes={MediaType.APPLICATION_JSON_VALUE},
 			produces={MediaType.APPLICATION_JSON_VALUE})
-	public ResponseEntity<String> login(@RequestBody User user){
+	public String login(@RequestBody User user){
 		return userservice.login(user.getEmail(), user.getPassword());
 	}
 
