@@ -48,8 +48,9 @@ userName|User Name|String
 password|User Password|String
 
 ### Response
-성공|{"result": "Success"}
+Case|Return
 ---|---
+성공|{"result": "Success"}
 실패|{"result": "Failure-Exist Email"}
 
 ## Log in
@@ -65,6 +66,7 @@ email|User E-mail|String
 password|User Password|String
 
 ### Response
-성공|{"result": "Success"}
+Case|Return
 ---|---
+성공|{"result": "Success"}
 실패|{"result": "Failure-Unknown Email"}
