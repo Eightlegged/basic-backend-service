@@ -32,9 +32,39 @@ java -jar 파일명.jar
 >> 회의시작\
 >> 회의종료
 
-## API
+# API
+## Sign up
 ### URI
 HTTP|URI
 ---|---
-POST|/user/add/{id}
-POST|/user/login/{id}
+POST|/user/add/
+
+### Parameter
+Parameter|Parameter명|Data Type
+---|---|---
+id|User ID|Long
+email|User E-mail|String
+userName|User Name|String
+password|User Password|String
+
+### Response
+성공|{"result": "Success"}
+---|---
+실패|{"result": "Failure-Exist Email"}
+
+## Log in
+### URI
+HTTP|URI
+---|---
+POST|/user/login/
+
+### Parameter
+Parameter|Parameter명|Data Type
+---|---|---
+email|User E-mail|String
+password|User Password|String
+
+### Response
+성공|{"result": "Success"}
+---|---
+실패|{"result": "Failure-Unknown Email"}
