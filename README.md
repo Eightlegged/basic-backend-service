@@ -31,3 +31,10 @@ java -jar 파일명.jar
 >> 회의삭제\
 >> 회의시작\
 >> 회의종료
+
+## API
+### URI
+HTTP|URI
+---|---
+POST|/user/add/{id}
+POST|/user/login/{id}
