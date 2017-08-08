@@ -30,8 +30,8 @@ public class UserController {
 			method=RequestMethod.POST,
 			consumes={MediaType.APPLICATION_JSON_VALUE},
 			produces={MediaType.APPLICATION_JSON_VALUE})
-	public String login(@RequestBody User user){
-		return userservice.login(user.getEmail(), user.getPassword());
+	public String login(@RequestBody String email, String password){
+		return userservice.login(email, password);
 	}
 
 }

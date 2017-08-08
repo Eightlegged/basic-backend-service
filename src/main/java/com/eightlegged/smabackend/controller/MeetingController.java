@@ -37,24 +37,24 @@ public class MeetingController {
 			value="/meeting/delete", method=RequestMethod.POST,
 			consumes= {MediaType.APPLICATION_JSON_VALUE},
 			produces= {MediaType.APPLICATION_JSON_VALUE})
-	public void deletemeeting(@RequestBody Meeting meeting) {
-		meetingservice.deleteMeetingById(meeting.getId());
+	public void deletemeeting(@RequestBody Long id) {
+		meetingservice.deleteMeetingById(id);
 	}
 	
 	@RequestMapping(
 			value="/meeting/start", method=RequestMethod.POST,
 			consumes= {MediaType.APPLICATION_JSON_VALUE},
 			produces= {MediaType.APPLICATION_JSON_VALUE})
-	public void startmeeting(@RequestBody Meeting meeting) {
-		meetingservice.startMeeting(meeting.getId());
+	public void startmeeting(@RequestBody Long id) {
+		meetingservice.startMeeting(id);
 	}
 	
 	@RequestMapping(
 			value="/meeting/end", method=RequestMethod.POST,
 			consumes= {MediaType.APPLICATION_JSON_VALUE},
 			produces= {MediaType.APPLICATION_JSON_VALUE})
-	public void completemeeting(@RequestBody Meeting meeting) {
-		meetingservice.completeMeeting(meeting.getId());
+	public void completemeeting(@RequestBody Long id) {
+		meetingservice.completeMeeting(id);
 	}
 
 }
