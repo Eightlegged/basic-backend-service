@@ -36,9 +36,9 @@ public class UserServiceImpl implements UserService {
 			user.setRole(Role.USER); // Master?
 			// Role 입력받을 경우 - user.setRole(Role);
 			userRepository.save(user);
-			return "{\"message\": \"SUCCESS\"}";
+			return "{\"result\": \"SUCCESS\"}";
 		}
-		return "{\"message\":\"FAIL\"}";
+		return "{\"result\":\"FAIL\"}";
 	}
 
 	@Override
@@ -46,8 +46,8 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		User user = userRepository.findByEmail(email);
 		if(user.getPassword() == password)
-			return "{\"message\": \"SUCCESS\"}";
-		return "{\"message\":\"FAIL\"}";
+			return "{\"result\": \"SUCCESS\"}";
+		return "{\"result\":\"FAIL\"}";
 	}
 
 	@Override
