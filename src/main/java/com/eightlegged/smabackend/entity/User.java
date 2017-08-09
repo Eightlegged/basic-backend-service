@@ -10,8 +10,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * @author Kim Sae-Young(heehouse1@gmail.com)
+ *
+ * @FileName User.java
+ * @Project smabackend
+ * @Date 2017. 8. 9.
+ */
+
 @Entity
-@Table(name = "User")
+@Table(name = "user_info")
 public class User implements Serializable {
 
 	/**
@@ -21,19 +29,19 @@ public class User implements Serializable {
 
 	@Id
 	@GeneratedValue
-	@Column(name = "idUser")
+	@Column(name = "user_id",nullable = false)
 	private long id;
 
-	@Column(name = "email", nullable = false, unique = true)
+	@Column(name = "user_email", nullable = false, unique = true)
 	private String email;
 
-	@Column(name = "userName")
+	@Column(name = "user_name", nullable = false)
 	private String userName;
 
-	@Column(name = "password")
+	@Column(name = "user_pw", nullable = false)
 	private String password;
 
-	@Column(name = "role", nullable = false)
+	@Column(name = "user_auth", nullable = false)
 	@Enumerated(EnumType.STRING)
 	private Role role;
 
