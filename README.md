@@ -5,7 +5,7 @@ Smart Meeting Assistant 어플리케이션의 Spring Boot 기반 Basic Back-End 
 * Meeting Service
 
 ### 사용 프레임워크(런타임 및 버전 상세 필요)
-* Spring-Boot 1.5.7
+* Spring-Boot 1.5.6
 * Maven 4.0.0
 
 ### 프로젝트 구조
