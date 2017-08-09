@@ -1,14 +1,28 @@
 package com.eightlegged.smabackend.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+/**
+ * @author Kim Sae-Young(heehouse1@gmail.com)
+ *
+ * @FileName User.java
+ * @Project smabackend
+ * @Date 2017. 8. 9.
+ */
 
 @Entity
 @Table(name = "user_info")
@@ -21,7 +35,7 @@ public class User implements Serializable {
 
 	@Id
 	@GeneratedValue
-	@Column(name = "user_id",nullable = false)
+	@Column(name = "user_id", nullable = false)
 	private long id;
 
 	@Column(name = "user_email", nullable = false, unique = true)
@@ -37,7 +51,12 @@ public class User implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private Role role;
 
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "user_mt_connect", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "user_id"), inverseJoinColumns = @JoinColumn(name = "meeting_id", referencedColumnName = "meeting_id"))
+	private List<Meeting> meetingList = new ArrayList<>();
+
 	public User() {
+
 	}
 
 	public User(long id) {
@@ -97,4 +116,11 @@ public class User implements Serializable {
 		this.role = role;
 	}
 
+	public List<Meeting> getMeetingList() {
+		return meetingList;
+	}
+
+	public void setMeetingList(List<Meeting> meetingList) {
+		this.meetingList = meetingList;
+	}
 }

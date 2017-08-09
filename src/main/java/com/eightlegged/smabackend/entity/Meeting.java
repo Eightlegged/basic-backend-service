@@ -1,5 +1,9 @@
 package com.eightlegged.smabackend.entity;
+
 import java.sql.Date;
+import java.sql.Time;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,9 +12,12 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import com.eightlegged.smabackend.JSON.JSONDeserializer;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * @author Kim Sae-Young(heehouse1@gmail.com)
@@ -21,34 +28,40 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name = "meeting")
+@Table(name = "meeting_serv")
 public class Meeting {
-	
+
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
-    private long id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "meeting_id", nullable = false)
+	private long id;
 
-    @Column
-    private String title;
+	@Column(name = "mt_name", nullable = false)
+	private String title;
 
-    @Column
-    private String subTitle;
-    
-    @Column
-    private String content;
-    
-    @Column
-    private Date startDate;
-    
-    @Column
-    private Date endDate;
+	@Column(name = "mt_comment")
+	private String comment;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-    
-    @Column(name = "status", nullable = false)
+	@Column(name = "mt_content")
+	private String content;
+
+	@Column(name = "mt_date", nullable = false)
+	private Date date;
+
+	@JsonFormat(pattern = "HH:mm")
+	@JsonDeserialize(using = JSONDeserializer.class)
+	@Column(name = "mt_st_time", nullable = false)
+	private Time startTime;
+
+	@JsonFormat(pattern = "HH:mm")
+	@JsonDeserialize(using = JSONDeserializer.class)
+	@Column(name = "mt_fn_time")
+	private Time endTime;
+
+	@ManyToMany(mappedBy = "meetingList")
+	private List<User> userList = new ArrayList<>();
+
+	@Column(name = "mt_status", nullable = false)
 	@Enumerated(EnumType.STRING)
 	private Status status;
 
@@ -68,12 +81,12 @@ public class Meeting {
 		this.title = title;
 	}
 
-	public String getSubTitle() {
-		return subTitle;
+	public String getComment() {
+		return comment;
 	}
 
-	public void setSubTitle(String subTitle) {
-		this.subTitle = subTitle;
+	public void setSubTitle(String comment) {
+		this.comment = comment;
 	}
 
 	public String getContent() {
@@ -84,30 +97,38 @@ public class Meeting {
 		this.content = content;
 	}
 
-	public Date getStartDate() {
-		return startDate;
+	public Date getDate() {
+		return date;
 	}
 
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
-	public Date getEndDate() {
-		return endDate;
+	public Time getStartTime() {
+		return startTime;
 	}
 
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
+	public void setStartTime(Time sartTime) {
+		this.startTime = sartTime;
 	}
 
-	public User getUser() {
-		return user;
+	public Time getEndTime() {
+		return endTime;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setEndTime(Time endTime) {
+		this.endTime = endTime;
 	}
-	
+
+	public List<User> getUserList() {
+		return userList;
+	}
+
+	public void setUserList(List<User> userList) {
+		this.userList = userList;
+	}
+
 	public Status getStatus() {
 		return status;
 	}
@@ -115,5 +136,5 @@ public class Meeting {
 	public void setStatus(Status status) {
 		this.status = status;
 	}
-    
+
 }
