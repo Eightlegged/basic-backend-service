@@ -45,7 +45,7 @@ public class UserServiceImpl implements UserService {
 	public String login(String email, String password) {
 		// TODO Auto-generated method stub
 		User user = userRepository.findByEmail(email);
-		if(user.getPassword() == password)
+		if(user.getPassword().equals(password) )
 			return "{\"result\": \"SUCCESS\"}";
 		return "{\"result\":\"FAIL\"}";
 	}
