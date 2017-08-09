@@ -10,6 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.eightlegged.smabackend.entity.User;
 import com.eightlegged.smabackend.service.UserService;
 
+/**
+ * @author Kim Sae-Young(heehouse1@gmail.com)
+ *
+ * @FileName UserController.java
+ * @Project smabackend
+ * @Date 2017. 8. 9.
+ */
 
 @RestController
 public class UserController {

@@ -35,7 +35,11 @@ public class User implements Serializable {
 
 	@Id
 	@GeneratedValue
+<<<<<<< HEAD
 	@Column(name = "user_id", nullable = false)
+=======
+	@Column(name = "user_id",nullable = false)
+>>>>>>> bdccbae5d5256450be963a397fe11ce9f3c7c164
 	private long id;
 
 	@Column(name = "user_email", nullable = false, unique = true)
