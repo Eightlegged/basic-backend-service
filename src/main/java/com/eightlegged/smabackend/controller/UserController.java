@@ -22,6 +22,9 @@ public class UserController {
 			consumes= {MediaType.APPLICATION_JSON_VALUE},
 			produces= {MediaType.APPLICATION_JSON_VALUE})
 	public String createUser(@RequestBody User user){
+		System.out.println("NAME:" + user.getUserName());
+		System.out.println("E-Mail: " + user.getEmail());
+		System.out.println("Pssword: " + user.getPassword());
 		return userservice.createUser(user.getUserName(), user.getEmail(),user.getPassword());
 	}
 	
@@ -31,6 +34,8 @@ public class UserController {
 			consumes={MediaType.APPLICATION_JSON_VALUE},
 			produces={MediaType.APPLICATION_JSON_VALUE})
 	public String login(@RequestBody User user){
+		System.out.println("E-Mail: " + user.getEmail());
+		System.out.println("Pssword: " + user.getPassword());
 		return userservice.login(user.getEmail(), user.getPassword());
 	}
 
