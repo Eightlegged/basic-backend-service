@@ -52,7 +52,7 @@ public class UserServiceImpl implements UserService {
 			// Role 입력받을 경우 - user.setRole(Role);
 			userRepository.save(user);
 			logger.info("User Created! User ID: " + user.getId());
-			return "{\"result\": \"SUCCESS\"}";
+			return "{\"result\": \"SUCCESS\", \"USER_ID\":\"" + user.getId() +"\"}";
 		} else if (findByEmail(email) != null && findByUsername(userName) == null) {
 			return "{\"result\":\"FAIL\", \"reason\":\"EMAIL Already Used\"}";
 		} else if (findByUsername(userName) != null && findByEmail(email) == null) {
