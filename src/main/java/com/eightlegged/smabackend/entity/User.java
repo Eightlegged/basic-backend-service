@@ -6,7 +6,7 @@ import java.util.List;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * @author Kim Sae-Young(heehouse1@gmail.com)
@@ -108,7 +108,8 @@ public class User implements Serializable {
 		this.role = role;
 	}
 	
-	@JsonIgnore
+//	@JsonIgnore
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	public List<Meeting> getMeetingList() {
 		return meetingList;
 	}
