@@ -39,13 +39,13 @@ public class MeetingServiceImpl implements MeetingService {
 	}
 
 	@Override
-	public void deleteMeetingById(long id) {
+	public void deleteMeetingById(Long id) {
 		MeetingRepository.delete(id);
 		logger.info("Meeting Deleted! Meeting ID: " + MeetingRepository.findOne(id).getId());
 	}
 
 	@Override
-	public void startMeeting(long id) {
+	public void startMeeting(Long id) {
 		// TODO Auto-generated method stub
 		Meeting meeting = MeetingRepository.findOne(id);
 		MeetingRepository.delete(meeting);
@@ -55,7 +55,7 @@ public class MeetingServiceImpl implements MeetingService {
 	}
 
 	@Override
-	public void completeMeeting(long id) {
+	public void completeMeeting(Long id) {
 		// TODO Auto-generated method stub
 		Meeting meeting = MeetingRepository.findOne(id);
 		MeetingRepository.delete(meeting);
@@ -65,7 +65,7 @@ public class MeetingServiceImpl implements MeetingService {
 	}
 
 	@Override
-	public Meeting findOne(long id) {
+	public Meeting findOne(Long id) {
 		Meeting meeting = MeetingRepository.findOne(id);
 		return meeting;
 	}
@@ -79,7 +79,7 @@ public class MeetingServiceImpl implements MeetingService {
 	}
 
 	@Override
-	public void setUser(long id) throws Exception{
+	public void setUser(Long id) throws Exception{
 		// TODO Auto-generated method stub
 		Meeting meeting = MeetingRepository.findOne(id);
 		for (int i = 0; i < meeting.getUserList().size(); i++) {

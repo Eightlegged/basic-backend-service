@@ -7,10 +7,10 @@ import com.eightlegged.smabackend.entity.User;
 
 public interface MeetingService {
 	void createMeeting(Meeting Meeting);
-	void deleteMeetingById(long id);
-	void startMeeting(long id);
-	void completeMeeting(long id);
-	void setUser(long id) throws Exception;
+	void deleteMeetingById(Long id);
+	void startMeeting(Long id);
+	void completeMeeting(Long id);
+	void setUser(Long id) throws Exception;
 	List<User> userList(User user);
-	Meeting findOne(long id);
+	Meeting findOne(Long id);
 }
