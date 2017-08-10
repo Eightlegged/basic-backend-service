@@ -46,10 +46,8 @@ public class MeetingController {
 	}
 	
 	@RequestMapping(
-			value="/meeting/delete", method=RequestMethod.POST,
-			consumes= {MediaType.APPLICATION_JSON_VALUE},
-			produces= {MediaType.APPLICATION_JSON_VALUE})
-	public String deletemeeting(@RequestBody Long id) {
+			value="/meeting/delete/{id}", method=RequestMethod.DELETE)
+	public String deletemeeting(@PathVariable Long id) {
 		return meetingservice.deleteMeetingById(id);
 	}
 	
