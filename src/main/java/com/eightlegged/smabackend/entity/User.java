@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * @author Kim Sae-Young(heehouse1@gmail.com)
  *
@@ -21,7 +23,7 @@ public class User implements Serializable {
 	/**
 	 * 
 	 */
-	private static final Long serialVersionUID = 7872760785026865644L;
+	private static final long serialVersionUID = 7872760785026865644L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -105,7 +107,8 @@ public class User implements Serializable {
 	public void setRole(Role role) {
 		this.role = role;
 	}
-
+	
+	@JsonIgnore
 	public List<Meeting> getMeetingList() {
 		return meetingList;
 	}

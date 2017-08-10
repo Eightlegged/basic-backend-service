@@ -9,6 +9,7 @@ import javax.persistence.*;
 
 import com.eightlegged.smabackend.JSON.JSONDeserializer;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
@@ -113,6 +114,7 @@ public class Meeting {
 		this.endTime = endTime;
 	}
 
+	@JsonIgnore
 	public List<User> getUserList() {
 		return userList;
 	}
