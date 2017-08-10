@@ -27,7 +27,7 @@ public class MeetingServiceImpl implements MeetingService {
 	private UserRepository userRepository;
 
 	@Override
-	public String createMeeting(Meeting meeting){
+	public String createMeeting(Meeting meeting) {
 		meetingRepository.save(meeting);
 		try {
 			setUser(meeting.getId());
@@ -37,15 +37,15 @@ public class MeetingServiceImpl implements MeetingService {
 		}
 
 		logger.info("Meeting Created! Meeting ID: " + meeting.getId());
-		
-		return "{\"result\": \"SUCCESS\", \"MEETING_ID\":\"" + meeting.getId() +"\"}";
+
+		return "{\"result\": \"SUCCESS\", \"MEETING_ID\":\"" + meeting.getId() + "\"}";
 	}
 
 	@Override
 	public String deleteMeetingById(Long id) {
 		meetingRepository.delete(id);
 		logger.info("Meeting Deleted! Meeting ID: " + meetingRepository.findOne(id).getId());
-		return "{\"result\": \"DELETE\", \"MEETING_ID\":\"" + id +"\"}";
+		return "{\"result\": \"DELETE\", \"MEETING_ID\":\"" + id + "\"}";
 	}
 
 	@Override
@@ -55,8 +55,8 @@ public class MeetingServiceImpl implements MeetingService {
 		meeting.setStatus(Status.START);
 		meetingRepository.save(meeting);
 		logger.info("Meeting Started! Meeting ID: " + meetingRepository.findOne(id).getId());
-		
-		return "{\"result\": \"START\", \"MEETING_STATUS\":\"" + meetingRepository.findOne(id).getStatus() +"\"}";
+
+		return "{\"result\": \"START\", \"MEETING_STATUS\":\"" + meetingRepository.findOne(id).getStatus() + "\"}";
 	}
 
 	@Override
@@ -66,8 +66,8 @@ public class MeetingServiceImpl implements MeetingService {
 		meeting.setStatus(Status.COMPLETE);
 		meetingRepository.save(meeting);
 		logger.info("Meeting Finished! Meeting ID: " + meetingRepository.findOne(id).getId());
-		
-		return "{\"result\": \"FINISHED\", \"MEETING_STATUS\":\"" + meetingRepository.findOne(id).getStatus() +"\"}";
+
+		return "{\"result\": \"FINISHED\", \"MEETING_STATUS\":\"" + meetingRepository.findOne(id).getStatus() + "\"}";
 	}
 
 	@Override
@@ -85,34 +85,38 @@ public class MeetingServiceImpl implements MeetingService {
 	}
 
 	@Override
-	public void setUser(Long id) throws Exception{
+	public void setUser(Long id) throws Exception {
 		// TODO Auto-generated method stub
 		Meeting meeting = meetingRepository.findOne(id);
+		System.out.println(meeting.getUserList().size());
 		for (int i = 0; i < meeting.getUserList().size(); i++) {
+			System.out.println(i);
 			User user = userRepository.findByEmail(meeting.getUserList().get(i).getEmail());
-			List<Meeting> existList = user.getMeetingList();
+			System.out.println(meeting.getUserList().get(i).getEmail());
 
-			boolean save = true;
+			if (user != null) {
+				List<Meeting> existList = user.getMeetingList();
 
-			if (!existList.isEmpty()) {
-				for (int j = 0; j < existList.size(); j++) {
-					if (id == existList.get(j).getId()) {
-						save = false;
-						break;
+				boolean save = true;
+
+				if (!existList.isEmpty()) {
+					for (int j = 0; j < existList.size(); j++) {
+						if (id == existList.get(j).getId()) {
+							save = false;
+						}
 					}
 				}
+
+				existList.add(meeting);
+				user.setMeetingList(existList);
+
+				if (save == true) {
+					userRepository.save(user);
+				}
+
+				logger.info("User(ID: " + user.getId() + ") Participate in Meeting(ID: "
+						+ meetingRepository.findOne(id).getId() + ")");
 			}
-
-			existList.add(meeting);
-			user.setMeetingList(existList);
-
-			if (save == true) {
-				userRepository.save(user);
-			}
-
-			logger.info("User(ID: " + user.getId() + ") Participate in Meeting(ID: "
-					+ meetingRepository.findOne(id).getId() + ")");
-
 		}
 	}
 }
