@@ -115,4 +115,11 @@ public class MeetingServiceImpl implements MeetingService {
 					+ meetingRepository.findOne(id).getId() + ")");
 		}
 	}
+
+	@Override
+	public List<Meeting> findByStatus(Status status) {
+		// TODO Auto-generated method stub
+		List<Meeting> meeting = meetingRepository.findByStatus(status);
+		return meeting;
+	}
 }

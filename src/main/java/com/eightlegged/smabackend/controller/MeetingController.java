@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.eightlegged.smabackend.entity.Meeting;
+import com.eightlegged.smabackend.entity.Status;
 import com.eightlegged.smabackend.repository.MeetingRepository;
 import com.eightlegged.smabackend.service.MeetingService;
-
 
 /**
  * @author Kim Sae-Young(heehouse1@gmail.com)
@@ -25,47 +25,46 @@ import com.eightlegged.smabackend.service.MeetingService;
 
 @RestController
 public class MeetingController {
-	
+
 	@Autowired
 	MeetingService meetingservice;
-	
+
 	@Autowired
 	MeetingRepository meetingrepository;
-	
-	@RequestMapping(
-			value="/meeting/add", method=RequestMethod.POST,
-			consumes= {MediaType.APPLICATION_JSON_VALUE},
-			produces= {MediaType.APPLICATION_JSON_VALUE})
-	public String createmeeting(@RequestBody Meeting meeting){
+
+	@RequestMapping(value = "/meeting/add", method = RequestMethod.POST, consumes = {
+			MediaType.APPLICATION_JSON_VALUE }, produces = { MediaType.APPLICATION_JSON_VALUE })
+	public String createmeeting(@RequestBody Meeting meeting) {
 		return meetingservice.createMeeting(meeting);
 	}
-	
-	@RequestMapping(
-			value="/meeting", method=RequestMethod.GET,
-			produces= {MediaType.APPLICATION_JSON_VALUE})
-	public List<Meeting> meetinginfo(){
-		return meetingrepository.findAll();
+
+	@RequestMapping(value = "/meeting/", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<Meeting> meetinginfo_w() {
+
+		return meetingrepository.findByStatus(Status.WAIT);
 	}
-	
-	@RequestMapping(
-			value="/meeting/delete/{id}", method=RequestMethod.DELETE)
+
+	@RequestMapping(value = "/meeting/complete", method = RequestMethod.GET, produces = {
+			MediaType.APPLICATION_JSON_VALUE })
+	public List<Meeting> meetinginfo_c() {
+
+		return meetingrepository.findByStatus(Status.COMPLETE);
+	}
+
+	@RequestMapping(value = "/meeting/delete/{id}", method = RequestMethod.DELETE)
 	public String deletemeeting(@PathVariable Long id) {
 		return meetingservice.deleteMeetingById(id);
 	}
-	
-	@RequestMapping(
-			value="/meeting/start", method=RequestMethod.POST,
-			consumes= {MediaType.APPLICATION_JSON_VALUE},
-			produces= {MediaType.APPLICATION_JSON_VALUE})
-	public String startmeeting(@RequestBody Long id) {
+
+	@RequestMapping(value = "/meeting/start/{id}", method = RequestMethod.POST, consumes = {
+			MediaType.APPLICATION_JSON_VALUE }, produces = { MediaType.APPLICATION_JSON_VALUE })
+	public String startmeeting(@PathVariable Long id) {
 		return meetingservice.startMeeting(id);
 	}
-	
-	@RequestMapping(
-			value="/meeting/end", method=RequestMethod.POST,
-			consumes= {MediaType.APPLICATION_JSON_VALUE},
-			produces= {MediaType.APPLICATION_JSON_VALUE})
-	public String completemeeting(@RequestBody Long id) {
+
+	@RequestMapping(value = "/meeting/end/{id}", method = RequestMethod.POST, consumes = {
+			MediaType.APPLICATION_JSON_VALUE }, produces = { MediaType.APPLICATION_JSON_VALUE })
+	public String completemeeting(@PathVariable Long id) {
 		return meetingservice.completeMeeting(id);
 	}
 
