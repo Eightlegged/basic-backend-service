@@ -42,6 +42,9 @@ public class User implements Serializable {
 	@Column(name = "user_auth")
 	@Enumerated(EnumType.STRING)
 	private Role role;
+	
+	@Column(name = "part")
+	private Long part_id;
 
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "user_mt_connect", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "user_id"), inverseJoinColumns = @JoinColumn(name = "meeting_id", referencedColumnName = "meeting_id"))

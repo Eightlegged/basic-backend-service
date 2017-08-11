@@ -38,6 +38,9 @@ public class Meeting {
 	@Column(name = "mt_content")
 	private String content;
 
+	@Column(name = "part")
+	private Long part_id;
+	
 	@Column(name = "mt_date", nullable = false)
 	private Date date;
 
@@ -45,7 +48,7 @@ public class Meeting {
 	@JsonDeserialize(using = JSONDeserializer.class)
 	@Column(name = "mt_st_time", nullable = false)
 	private Time startTime;
-
+	
 	@JsonFormat(pattern = "HH:mm")
 	@JsonDeserialize(using = JSONDeserializer.class)
 	@Column(name = "mt_fn_time")
