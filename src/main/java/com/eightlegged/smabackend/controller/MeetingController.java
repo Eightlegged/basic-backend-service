@@ -1,5 +1,7 @@
 package com.eightlegged.smabackend.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,10 +41,10 @@ public class MeetingController {
 	}
 	
 	@RequestMapping(
-			value="/meeting/{id}", method=RequestMethod.GET,
+			value="/meeting", method=RequestMethod.GET,
 			produces= {MediaType.APPLICATION_JSON_VALUE})
-	public Meeting meetinginfo(@PathVariable Long id){
-		return meetingrepository.findOne(id);
+	public List<Meeting> meetinginfo(){
+		return meetingrepository.findAll();
 	}
 	
 	@RequestMapping(

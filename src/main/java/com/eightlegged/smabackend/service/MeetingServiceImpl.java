@@ -28,14 +28,16 @@ public class MeetingServiceImpl implements MeetingService {
 
 	@Override
 	public String createMeeting(Meeting meeting) {
-		meetingRepository.save(meeting);
-		try {
-			setUser(meeting.getId());
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 
+		meetingRepository.save(meeting);
+		
+		for (int i = 0; i < meeting.getUserList().size(); i++) {
+			System.out.println(meeting.getUserList().get(i).getEmail());
+			setUser(meeting.getUserList().get(i).getEmail(), meeting.getId());
+		}
+		
+		meetingRepository.save(meeting);
+		
 		logger.info("Meeting Created! Meeting ID: " + meeting.getId());
 
 		return "{\"result\": \"SUCCESS\", \"MEETING_ID\":\"" + meeting.getId() + "\"}";
@@ -85,38 +87,32 @@ public class MeetingServiceImpl implements MeetingService {
 	}
 
 	@Override
-	public void setUser(Long id) throws Exception {
+	public void setUser(String email, Long id) {
 		// TODO Auto-generated method stub
+		User user = userRepository.findByEmail(email);
 		Meeting meeting = meetingRepository.findOne(id);
-		System.out.println(meeting.getUserList().size());
-		for (int i = 0; i < meeting.getUserList().size(); i++) {
-			System.out.println(i);
-			User user = userRepository.findByEmail(meeting.getUserList().get(i).getEmail());
-			System.out.println(meeting.getUserList().get(i).getEmail());
 
-			if (user != null) {
-				List<Meeting> existList = user.getMeetingList();
+		if (user != null) {
+			List<Meeting> existList = user.getMeetingList();
 
-				boolean save = true;
+			boolean save = true;
 
-				if (!existList.isEmpty()) {
-					for (int j = 0; j < existList.size(); j++) {
-						if (id == existList.get(j).getId()) {
-							save = false;
-						}
+			if (!existList.isEmpty()) {
+				for (int j = 0; j < existList.size(); j++) {
+					if (id == existList.get(j).getId()) {
+						save = false;
 					}
 				}
+			}
 
+			if (save == true) {
 				existList.add(meeting);
 				user.setMeetingList(existList);
-
-				if (save == true) {
-					userRepository.save(user);
-				}
-
-				logger.info("User(ID: " + user.getId() + ") Participate in Meeting(ID: "
-						+ meetingRepository.findOne(id).getId() + ")");
 			}
+			
+
+			logger.info("User(ID: " + user.getId() + ") Participate in Meeting(ID: "
+					+ meetingRepository.findOne(id).getId() + ")");
 		}
 	}
 }

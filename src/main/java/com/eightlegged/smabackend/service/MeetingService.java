@@ -13,8 +13,8 @@ public interface MeetingService {
 	String startMeeting(Long id);
 
 	String completeMeeting(Long id);
-
-	void setUser(Long id) throws Exception;
+	
+	void setUser(String email, Long id);
 
 	List<User> userList(User user);
 

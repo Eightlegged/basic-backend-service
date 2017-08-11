@@ -114,7 +114,7 @@ public class Meeting {
 		this.endTime = endTime;
 	}
 
-	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	@JsonProperty(access = JsonProperty.Access.AUTO)
 	public List<User> getUserList() {
 		return userList;
 	}
