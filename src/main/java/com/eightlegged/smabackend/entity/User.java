@@ -33,13 +33,13 @@ public class User implements Serializable {
 	@Column(name = "user_email", nullable = false, unique = true)
 	private String email;
 
-	@Column(name = "user_name", nullable = false)
+	@Column(name = "user_name")
 	private String userName;
 
-	@Column(name = "user_pw", nullable = false)
+	@Column(name = "user_pw")
 	private String password;
 
-	@Column(name = "user_auth", nullable = false)
+	@Column(name = "user_auth")
 	@Enumerated(EnumType.STRING)
 	private Role role;
 
