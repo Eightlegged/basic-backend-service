@@ -51,7 +51,7 @@ public class Meeting {
 	@Column(name = "mt_fn_time")
 	private Time endTime;
 
-	@ManyToMany(mappedBy = "meetingList")
+	@ManyToMany(cascade = CascadeType.REMOVE,  mappedBy = "meetingList")
 	private List<User> userList = new ArrayList<>();
 
 	@Column(name = "mt_status", nullable = false)

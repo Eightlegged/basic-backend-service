@@ -51,7 +51,7 @@ public class MeetingController {
 		return meetingrepository.findByStatus(Status.COMPLETE);
 	}
 
-	@RequestMapping(value = "/meeting/delete/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/meeting/delete/{id}", method = RequestMethod.POST)
 	public String deletemeeting(@PathVariable Long id) {
 		return meetingservice.deleteMeetingById(id);
 	}

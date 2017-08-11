@@ -30,14 +30,14 @@ public class MeetingServiceImpl implements MeetingService {
 	public String createMeeting(Meeting meeting) {
 
 		meetingRepository.save(meeting);
-		
+
 		for (int i = 0; i < meeting.getUserList().size(); i++) {
 			System.out.println(meeting.getUserList().get(i).getEmail());
 			setUser(meeting.getUserList().get(i).getEmail(), meeting.getId());
 		}
-		
+
 		meetingRepository.save(meeting);
-		
+
 		logger.info("Meeting Created! Meeting ID: " + meeting.getId());
 
 		return "{\"result\": \"SUCCESS\", \"MEETING_ID\":\"" + meeting.getId() + "\"}";
@@ -45,8 +45,17 @@ public class MeetingServiceImpl implements MeetingService {
 
 	@Override
 	public String deleteMeetingById(Long id) {
-		meetingRepository.delete(id);
+		meetingRepository.findOne(id).getUserList().clear();
+		if (userRepository.findAll() != null) {
+			for (int i = 0; i < userRepository.findAll().size(); i++) {
+				userRepository.findAll().get(i).getMeetingList().clear();
+			}
+		}
+
 		logger.info("Meeting Deleted! Meeting ID: " + meetingRepository.findOne(id).getId());
+		meetingRepository.delete(meetingRepository.findOne(id));
+		;
+
 		return "{\"result\": \"DELETE\", \"MEETING_ID\":\"" + id + "\"}";
 	}
 
@@ -65,11 +74,16 @@ public class MeetingServiceImpl implements MeetingService {
 	public String completeMeeting(Long id) {
 		// TODO Auto-generated method stub
 		Meeting meeting = meetingRepository.findOne(id);
-		meeting.setStatus(Status.COMPLETE);
-		meetingRepository.save(meeting);
-		logger.info("Meeting Finished! Meeting ID: " + meetingRepository.findOne(id).getId());
+		if (meeting != null) {
+			meeting.setStatus(Status.COMPLETE);
+			meetingRepository.save(meeting);
+			logger.info("Meeting Finished! Meeting ID: " + meetingRepository.findOne(id).getId());
 
-		return "{\"result\": \"FINISHED\", \"MEETING_STATUS\":\"" + meetingRepository.findOne(id).getStatus() + "\"}";
+			return "{\"result\": \"FINISHED\", \"MEETING_STATUS\":\"" + meetingRepository.findOne(id).getStatus()
+					+ "\"}";
+		}
+		return "{\"result\": \"FAIL\", \"MEETING_STATUS\":\"" + "MEETING_DOES_NOT_EXIST"
+				+ "\"}";
 	}
 
 	@Override
@@ -109,7 +123,6 @@ public class MeetingServiceImpl implements MeetingService {
 				existList.add(meeting);
 				user.setMeetingList(existList);
 			}
-			
 
 			logger.info("User(ID: " + user.getId() + ") Participate in Meeting(ID: "
 					+ meetingRepository.findOne(id).getId() + ")");
