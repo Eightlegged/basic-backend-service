@@ -45,18 +45,17 @@ public class MeetingServiceImpl implements MeetingService {
 
 	@Override
 	public String deleteMeetingById(Long id) {
-		meetingRepository.findOne(id).getUserList().clear();
-		if (userRepository.findAll() != null) {
-			for (int i = 0; i < userRepository.findAll().size(); i++) {
-				userRepository.findAll().get(i).getMeetingList().clear();
-			}
+		Meeting meeting = meetingRepository.findOne(id);
+		if (meeting != null) {
+			meeting.setStatus(Status.DELETED);
+			meetingRepository.save(meeting);
+			logger.info("Meeting Finished! Meeting ID: " + meetingRepository.findOne(id).getId());
+
+			return "{\"result\": \"DELETEDD\", \"MEETING_STATUS\":\"" + meetingRepository.findOne(id).getStatus()
+					+ "\"}";
 		}
-
-		logger.info("Meeting Deleted! Meeting ID: " + meetingRepository.findOne(id).getId());
-		meetingRepository.delete(meetingRepository.findOne(id));
-		;
-
-		return "{\"result\": \"DELETE\", \"MEETING_ID\":\"" + id + "\"}";
+		return "{\"result\": \"FAIL\", \"MEETING_STATUS\":\"" + "MEETING_DOES_NOT_EXIST"
+				+ "\"}";
 	}
 
 	@Override
