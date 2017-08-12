@@ -89,25 +89,10 @@ status|Meeting Status|Status(WAIT or COMPLETE)
 partName|Part Name|Partname(Architecture, Engineering, RnD or QA)
 userList|User List|ArrayList<User>
 
-ex) 
-{  
-	"title":"weekly1",  
-	"comment":"weekly",  
-	"content":"test123",  
-	"date":"20170831",  
-	"startTime":"10:00",  
-	"status":"WAIT",  
-	"partName":"Architecture",  
-	"userList": 
-	[  
-		{  
-			"userName": "Saeyoung"  
-		},  
-		{  
-			"userName": "Faeyoung"  
-		}  
-	]  
-}  
+ex)  
+{"title":"weekly1", "comment":"weekly","content":"test123","date":"20170831","startTime":"10:00",  
+"status":"WAIT","partName":"Architecture","userList": [{"userName": "Saeyoung"},{"userName": "Faeyoung"}]}  
+
 ### Response
 Case|Return
 ---|---
