@@ -194,4 +194,19 @@ Case|Return
 ---|---
 성공|{"result": "DELETED", "MEETING_STATUS":"DELETE"}
 
+## Get Part Meeting List
+### URI
+HTTP|URI
+---|---
+POST|/meeting/{id}
+
+### Parameter(PathVariable)
+Parameter|Parameter명|Data Type
+---|---|---
+id|Part id(1: Architecture, 2: Engineering, 3: RnD, 4: QA)|Long
+
+### Response
+Case|Return
+---|---
+성공|ArrayList<Meeting>
 
