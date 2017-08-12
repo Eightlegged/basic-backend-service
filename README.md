@@ -150,7 +150,41 @@ Case|Return
 ---|---
 성공|ArrayList<Meeting>
 
-  
+
+## Get User's Meeting List(Meeting Status:WAIT)
+### URI
+HTTP|URI
+---|---
+POST|/user/wait/{id}
+
+### Parameter(PathVariable)
+Parameter|Parameter명|Data Type
+---|---|---
+id|User id|Long
+
+### Response
+Case|Return
+---|---
+성공|ArrayList<Meeting>
+
+
+## Get User's Meeting List(Meeting Status:COMPLETE)
+### URI
+HTTP|URI
+---|---
+POST|/user/end/{id}
+
+### Parameter(PathVariable)
+Parameter|Parameter명|Data Type
+---|---|---
+id|User id|Long
+
+### Response
+Case|Return
+---|---
+성공|ArrayList<Meeting>
+
+
 ## Start Meeting
 ### URI
 HTTP|URI
