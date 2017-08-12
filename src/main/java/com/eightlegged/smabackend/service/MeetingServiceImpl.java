@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.eightlegged.smabackend.entity.Meeting;
+import com.eightlegged.smabackend.entity.Partname;
 import com.eightlegged.smabackend.entity.Status;
 import com.eightlegged.smabackend.entity.User;
 import com.eightlegged.smabackend.repository.MeetingRepository;
@@ -132,6 +133,13 @@ public class MeetingServiceImpl implements MeetingService {
 	public List<Meeting> findByStatus(Status status) {
 		// TODO Auto-generated method stub
 		List<Meeting> meeting = meetingRepository.findByStatus(status);
+		return meeting;
+	}
+
+	@Override
+	public List<Meeting> findByPart(Partname partname) {
+		// TODO Auto-generated method stub
+		List<Meeting> meeting = meetingRepository.findByPartname(partname);
 		return meeting;
 	}
 }

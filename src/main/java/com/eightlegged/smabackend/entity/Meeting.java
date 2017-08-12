@@ -38,9 +38,6 @@ public class Meeting {
 	@Column(name = "mt_content")
 	private String content;
 
-	@Column(name = "part")
-	private Long part_id;
-	
 	@Column(name = "mt_date", nullable = false)
 	private Date date;
 
@@ -48,18 +45,22 @@ public class Meeting {
 	@JsonDeserialize(using = JSONDeserializer.class)
 	@Column(name = "mt_st_time", nullable = false)
 	private Time startTime;
-	
+
 	@JsonFormat(pattern = "HH:mm")
 	@JsonDeserialize(using = JSONDeserializer.class)
 	@Column(name = "mt_fn_time")
 	private Time endTime;
 
-	@ManyToMany(cascade = CascadeType.REMOVE,  mappedBy = "meetingList")
+	@ManyToMany(cascade = CascadeType.REMOVE, mappedBy = "meetingList")
 	private List<User> userList = new ArrayList<>();
 
 	@Column(name = "mt_status", nullable = false)
 	@Enumerated(EnumType.STRING)
 	private Status status;
+
+	@Column(name = "part")
+	@Enumerated(EnumType.STRING)
+	private Partname partname;
 
 	public Long getId() {
 		return id;
@@ -124,6 +125,14 @@ public class Meeting {
 
 	public void setUserList(List<User> userList) {
 		this.userList = userList;
+	}
+
+	public Partname getPartName() {
+		return partname;
+	}
+
+	public void setPartName(Partname partname) {
+		this.partname = partname;
 	}
 
 	public Status getStatus() {

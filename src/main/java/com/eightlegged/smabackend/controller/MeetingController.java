@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.eightlegged.smabackend.entity.Meeting;
+import com.eightlegged.smabackend.entity.Partname;
 import com.eightlegged.smabackend.entity.Status;
 import com.eightlegged.smabackend.repository.MeetingRepository;
 import com.eightlegged.smabackend.service.MeetingService;
@@ -49,6 +50,30 @@ public class MeetingController {
 	public List<Meeting> meetinginfo_c() {
 
 		return meetingrepository.findByStatus(Status.COMPLETE);
+	}
+
+	@RequestMapping(value = "/meeting/1", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<Meeting> meeting_part1() {
+
+		return meetingrepository.findByPartname(Partname.Architecture);
+	}
+
+	@RequestMapping(value = "/meeting/2", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<Meeting> meeting_part2() {
+
+		return meetingrepository.findByPartname(Partname.Engineering);
+	}
+
+	@RequestMapping(value = "/meeting/3", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<Meeting> meeting_part3() {
+
+		return meetingrepository.findByPartname(Partname.RnD);
+	}
+
+	@RequestMapping(value = "/meeting/4", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<Meeting> meeting_part4() {
+
+		return meetingrepository.findByPartname(Partname.QA);
 	}
 
 	@RequestMapping(value = "/meeting/delete/{id}", method = RequestMethod.POST)

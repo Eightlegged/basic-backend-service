@@ -3,6 +3,7 @@ package com.eightlegged.smabackend.service;
 import java.util.List;
 
 import com.eightlegged.smabackend.entity.Meeting;
+import com.eightlegged.smabackend.entity.Partname;
 import com.eightlegged.smabackend.entity.Status;
 import com.eightlegged.smabackend.entity.User;
 
@@ -22,4 +23,6 @@ public interface MeetingService {
 	Meeting findOne(Long id);
 	
 	List<Meeting> findByStatus(Status status);
+	
+	List<Meeting> findByPart(Partname partname);
 }
