@@ -205,7 +205,7 @@ Case|Return
 ### URI
 HTTP|URI
 ---|---
-POST/meeting/start/{id}
+POST|/meeting/start/{id}
 
 ### Parameter(PathVariable)
 Parameter|Parameter명|Data Type
@@ -239,7 +239,7 @@ Case|Return
 ### URI
 HTTP|URI
 ---|---
-POST/meeting/delete/{id}
+POST|/meeting/delete/{id}
 
 ### Parameter(PathVariable)
 Parameter|Parameter명|Data Type
