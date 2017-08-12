@@ -52,7 +52,7 @@ public class MeetingServiceImpl implements MeetingService {
 			meetingRepository.save(meeting);
 			logger.info("Meeting Finished! Meeting ID: " + meetingRepository.findOne(id).getId());
 
-			return "{\"result\": \"DELETEDD\", \"MEETING_STATUS\":\"" + meetingRepository.findOne(id).getStatus()
+			return "{\"result\": \"START\", \"MEETING_STATUS\":\"" + meetingRepository.findOne(id).getStatus()
 					+ "\"}";
 		}
 		return "{\"result\": \"FAIL\", \"MEETING_STATUS\":\"" + "MEETING_DOES_NOT_EXIST"
@@ -63,12 +63,18 @@ public class MeetingServiceImpl implements MeetingService {
 	public String startMeeting(Long id) {
 		// TODO Auto-generated method stub
 		Meeting meeting = meetingRepository.findOne(id);
-		meeting.setStatus(Status.START);
-		meetingRepository.save(meeting);
-		logger.info("Meeting Started! Meeting ID: " + meetingRepository.findOne(id).getId());
+		if (meeting != null) {
+			meeting.setStatus(Status.START);
+			meetingRepository.save(meeting);
+			logger.info("Meeting Finished! Meeting ID: " + meetingRepository.findOne(id).getId());
 
-		return "{\"result\": \"START\", \"MEETING_STATUS\":\"" + meetingRepository.findOne(id).getStatus() + "\"}";
+			return "{\"result\": \"DELETED\", \"MEETING_STATUS\":\"" + meetingRepository.findOne(id).getStatus()
+					+ "\"}";
+		}
+		return "{\"result\": \"FAIL\", \"MEETING_STATUS\":\"" + "MEETING_DOES_NOT_EXIST"
+				+ "\"}";
 	}
+
 
 	@Override
 	public String completeMeeting(Long id) {

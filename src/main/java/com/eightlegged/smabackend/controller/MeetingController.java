@@ -81,8 +81,7 @@ public class MeetingController {
 		return meetingservice.deleteMeetingById(id);
 	}
 
-	@RequestMapping(value = "/meeting/start/{id}", method = RequestMethod.POST, consumes = {
-			MediaType.APPLICATION_JSON_VALUE }, produces = { MediaType.APPLICATION_JSON_VALUE })
+	@RequestMapping(value = "/meeting/start/{id}", method = RequestMethod.POST)
 	public String startmeeting(@PathVariable Long id) {
 		return meetingservice.startMeeting(id);
 	}
