@@ -25,6 +25,7 @@ java -jar 파일명.jar
 >> 회의시작\
 >> 회의종료
 
+
 # API
 ## Sign up
 ### URI
@@ -46,6 +47,7 @@ Case|Return
 성공|{"result": "SUCCESS","MEETING_ID": "1"}
 실패|{"result": "FAIL","reason": "EMAIL & Name Already Used"}
 
+  
 ## Log in
 ### URI
 HTTP|URI
@@ -63,6 +65,7 @@ Case|Return
 ---|---
 성공|{"result": "SUCCESS"}
 
+  
 ## Add Meeting
 ### URI
 HTTP|URI
@@ -90,7 +93,7 @@ Case|Return
 ---|---
 성공|{"result": "SUCCESS","MEETING_ID": "5"}
 
-
+  
 ## Get Meeting List(Meeting Status:WAIT)
 ### URI
 HTTP|URI
@@ -135,6 +138,7 @@ ex)
     }
 }
 
+  
 ## Get Meeting List(Meeting Status:COMPLETE)
 ### URI
 HTTP|URI
@@ -146,6 +150,7 @@ Case|Return
 ---|---
 성공|ArrayList<Meeting>
 
+  
 ## Start Meeting
 ### URI
 HTTP|URI
@@ -162,6 +167,7 @@ Case|Return
 ---|---
 성공|{"result": "START", "MEETING_STATUS":"START"}
 
+  
 ## End Meeting
 ### URI
 HTTP|URI
@@ -178,6 +184,7 @@ Case|Return
 ---|---
 성공|{"result": "FINISHED", "MEETING_STATUS":"COMPLETE"}
 
+  
 ## Delete Meeting
 ### URI
 HTTP|URI
@@ -194,6 +201,7 @@ Case|Return
 ---|---
 성공|{"result": "DELETED", "MEETING_STATUS":"DELETE"}
 
+  
 ## Get Part Meeting List
 ### URI
 HTTP|URI
