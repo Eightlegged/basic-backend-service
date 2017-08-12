@@ -33,8 +33,8 @@ public class MeetingServiceImpl implements MeetingService {
 		meetingRepository.save(meeting);
 
 		for (int i = 0; i < meeting.getUserList().size(); i++) {
-			System.out.println(meeting.getUserList().get(i).getEmail());
-			setUser(meeting.getUserList().get(i).getEmail(), meeting.getId());
+			System.out.println(meeting.getUserList().get(i).getName());
+			setUser(meeting.getUserList().get(i).getName(), meeting.getId());
 		}
 
 		meetingRepository.save(meeting);
@@ -101,9 +101,9 @@ public class MeetingServiceImpl implements MeetingService {
 	}
 
 	@Override
-	public void setUser(String email, Long id) {
+	public void setUser(String userName, Long id) {
 		// TODO Auto-generated method stub
-		User user = userRepository.findByEmail(email);
+		User user = userRepository.findByUserName(userName);
 		Meeting meeting = meetingRepository.findOne(id);
 
 		if (user != null) {
