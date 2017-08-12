@@ -184,6 +184,22 @@ Case|Return
 ---|---
 성공|ArrayList<Meeting>
 
+## Get Meeting Info
+### URI
+HTTP|URI
+---|---
+POST|/meeting/info/{id}
+
+### Parameter(PathVariable)
+Parameter|Parameter명|Data Type
+---|---|---
+id|Meeting id|Long
+
+### Response
+Case|Return
+---|---
+성공|Meeting
+
 
 ## Start Meeting
 ### URI
