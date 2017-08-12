@@ -81,7 +81,7 @@ POST|/meeting/add/
 Parameter|Parameter명|Data Type
 ---|---|---
 title|Meeting Title|String
-comment|Meeting Subtitle(or Comment)|String
+comment|Meeting Object|String
 content|Meeting Content|String
 date|Meeting Date|date(YYYY-MM-DD)
 startTime|Start Time|Time(HH:MM)
