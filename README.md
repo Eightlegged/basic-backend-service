@@ -77,4 +77,25 @@ HTTP|URI
 ---|---
 POST|/meeting/add/
 
-{"title":"weekly1", "comment":"weekly","content":"test123","date":"20170831","startTime":"10:00","status":"WAIT","partName":"Architecture","userList": [{"email":"heehouse1@gmail.com","userName": "Saeyoung"},{"email":"heehouse2@gmail.com","userName": "Faeyoung"}]}
+### Parameter
+Parameter|Parameter명|Data Type
+---|---|---
+title|Meeting Title|String
+comment|Meeting Subtitle(or Comment)|String
+content|Meeting Content|String
+date|Meeting Date|date(YYYY-MM-DD)
+startTime|Start Time|Time(HH:MM)
+status|Meeting Status|Status(WAIT or COMPLETE)
+partName|Part Name|Partname(Architecture, Engineering, RnD or QA)
+userList|User List|ArrayList<User>
+
+ex) 
+{"title":"weekly1", "comment":"weekly","content":"test123","date":"2017-08-31","startTime":"10:00","status":"WAIT","partName":"Architecture","userList": [{"userName": "Saeyoung"},{"userName": "Faeyoung"}]}
+
+
+### Response
+Case|Return
+---|---
+성공|{"result": "SUCCESS","MEETING_ID": "5"}
+
+
