@@ -19,5 +19,6 @@ public interface UserService {
 	User findByUsername(String username);
 	String createUser(String username, String email, String password);
 	String login(String email, String password);
-	List<Meeting> meetingList(User user);
+	List<Meeting> meetingList_w(User user);
+	List<Meeting> meetingList_c(User user);
 }

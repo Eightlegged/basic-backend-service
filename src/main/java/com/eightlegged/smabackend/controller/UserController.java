@@ -40,10 +40,24 @@ public class UserController {
 	}
 	
 	@RequestMapping(
-			value="/user/{id}", method=RequestMethod.GET,
+			value="/user/all/{id}", method=RequestMethod.GET,
 			produces= {MediaType.APPLICATION_JSON_VALUE})
 	public List<Meeting> meetingList(@PathVariable Long id){
 		return userservice.findById(id).getMeetingList();
+	}
+	
+	@RequestMapping(
+			value="/user/wait/{id}", method=RequestMethod.GET,
+			produces= {MediaType.APPLICATION_JSON_VALUE})
+	public List<Meeting> meetingList_w(@PathVariable Long id){
+		return userservice.meetingList_w(userservice.findById(id));
+	}
+	
+	@RequestMapping(
+			value="/user/end/{id}", method=RequestMethod.GET,
+			produces= {MediaType.APPLICATION_JSON_VALUE})
+	public List<Meeting> meetingList_c(@PathVariable Long id){
+		return userservice.meetingList_c(userservice.findById(id));
 	}
 	
 	@RequestMapping(
