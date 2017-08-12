@@ -178,7 +178,7 @@ Case|Return
 ---|---
 성공|{"result": "FINISHED", "MEETING_STATUS":"COMPLETE"}
 
-# #Delete Meeting
+## Delete Meeting
 ### URI
 HTTP|URI
 ---|---
