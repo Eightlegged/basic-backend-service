@@ -56,7 +56,7 @@ public class Meeting {
 
 	@Column(name = "mt_status", nullable = false)
 	@Enumerated(EnumType.STRING)
-	private Status status;
+	private Status status = Status.WAIT;
 
 	@Column(name = "part")
 	@Enumerated(EnumType.STRING)
