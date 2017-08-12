@@ -90,9 +90,30 @@ partName|Part Name|Partname(Architecture, Engineering, RnD or QA)
 userList|User List|ArrayList<User>
 
 ex)  
+<<<<<<< HEAD
 {"title":"weekly1", "comment":"weekly","content":"test123","date":"20170831","startTime":"10:00",  
 "status":"WAIT","partName":"Architecture","userList": [{"userName": "Saeyoung"},{"userName": "Faeyoung"}]}  
 
+=======
+{  
+	"title":"weekly1",  
+	"comment":"weekly",  
+	"content":"test123",  
+	"date":"20170831",  
+	"startTime":"10:00",  
+	"status":"WAIT",  
+	"partName":"Architecture",  
+	"userList": 
+	[  
+		{  
+			"userName": "Saeyoung"  
+		},  
+		{  
+			"userName": "Faeyoung"  
+		}  
+	]  
+}  
+>>>>>>> branch 'master' of https://github.com/Eightlegged/basic-backend-service.git
 ### Response
 Case|Return
 ---|---
