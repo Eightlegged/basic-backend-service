@@ -14,13 +14,6 @@ Spring Boot 기반의 프로젝트를 jar 파일로 패키징하여 PaaS상에 �
 ### 사용 방법
 해당 jar 파일이 있는 곳에서 
 java -jar 파일명.jar
-> 회원가입
->> localhost:8080/user/add\
->> JSON 포멧으로 POST\
->> {"id":"1", 	"email":"heehouse1@gmail.com", "userName":"Saeyoung","password":"test123" } \
-> 로그인
->> localhost:8080/user/login\
->> JSON 포멧으로 POST
 
 ### 기능 (추 후 추가 가능)
 > 회원서비스
@@ -50,8 +43,8 @@ password|User Password|String
 ### Response
 Case|Return
 ---|---
-성공|{"result": "Success"}
-실패|{"result": "Failure-Exist Email"}
+성공|{"result": "SUCCESS","MEETING_ID": "1"}
+실패|{"result": "FAIL","reason": "EMAIL & Name Already Used"}
 
 ## Log in
 ### URI
@@ -68,8 +61,7 @@ password|User Password|String
 ### Response
 Case|Return
 ---|---
-성공|{"result": "Success"}
-실패|{"result": "Failure-Unknown Email"}
+성공|{"result": "SUCCESS"}
 
 ## Add Meeting
 ### URI
@@ -97,5 +89,109 @@ ex)
 Case|Return
 ---|---
 성공|{"result": "SUCCESS","MEETING_ID": "5"}
+
+
+##Get Meeting List(Meeting Status:WAIT)
+### URI
+HTTP|URI
+---|---
+POST|/meeting/
+
+### Response
+Case|Return
+---|---
+성공|ArrayList<Meeting>
+
+ex)
+[
+    {
+        "id": 1,
+        "title": "weekly1",
+        "comment": "weekly",
+        "content": "test123",
+        "date": "1970-01-01",
+        "startTime": "10:00:00",
+        "endTime": null,
+        "userList": [
+            {
+                "id": 1,
+                "email": "heehouse1@gmail.com",
+                "userName": "Saeyoung",
+                "password": "test123",
+                "role": "USER",
+                "name": "Saeyoung"
+            },
+            {
+                "id": 2,
+                "email": "heehouse2@gmail.com",
+                "userName": "Faeyoung",
+                "password": "test123",
+                "role": "USER",
+                "name": "Faeyoung"
+            }
+        ],
+        "status": "WAIT",
+        "partName": "Architecture"
+    }
+}
+
+##Get Meeting List(Meeting Status:COMPLETE)
+### URI
+HTTP|URI
+---|---
+POST|/meeting/end/
+
+### Response
+Case|Return
+---|---
+성공|ArrayList<Meeting>
+
+##Start Meeting
+### URI
+HTTP|URI
+---|---
+POST/meeting/start/{id}
+
+### Parameter(PathVariable)
+Parameter|Parameter명|Data Type
+---|---|---
+id|Meeting id|Long
+
+### Response
+Case|Return
+---|---
+성공|{"result": "START", "MEETING_STATUS":"START"}
+
+##End Meeting
+### URI
+HTTP|URI
+---|---
+POST/meeting/end/{id}
+
+### Parameter(PathVariable)
+Parameter|Parameter명|Data Type
+---|---|---
+id|Meeting id|Long
+
+### Response
+Case|Return
+---|---
+성공|{"result": "FINISHED", "MEETING_STATUS":"COMPLETE"}
+
+##Delete Meeting
+### URI
+HTTP|URI
+---|---
+POST/meeting/delete/{id}
+
+### Parameter(PathVariable)
+Parameter|Parameter명|Data Type
+---|---|---
+id|Meeting id|Long
+
+### Response
+Case|Return
+---|---
+성공|{"result": "DELETED", "MEETING_STATUS":"DELETE"}
 
 
