@@ -89,7 +89,7 @@ status|Meeting Status|Status(WAIT or COMPLETE)
 partName|Part Name|Partname(Architecture, Engineering, RnD or QA)
 userList|User List|ArrayList<User>
 
-ex) 
+ex)  
 {  
 	"title":"weekly1",  
 	"comment":"weekly",  
