@@ -39,10 +39,10 @@ public class MeetingController {
 		return meetingservice.createMeeting(meeting);
 	}
 
-	@RequestMapping(value = "/meeting/", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE })
-	public List<Meeting> meetinginfo_w() {
+	@RequestMapping(value = "/meeting/info/{id}", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE })
+	public Meeting meetinginfo(@PathVariable Long id) {
 
-		return meetingrepository.findByStatus(Status.WAIT);
+		return meetingrepository.findOne(id);
 	}
 
 	@RequestMapping(value = "/meeting/complete", method = RequestMethod.GET, produces = {
@@ -50,6 +50,13 @@ public class MeetingController {
 	public List<Meeting> meetinginfo_c() {
 
 		return meetingrepository.findByStatus(Status.COMPLETE);
+	}
+
+	@RequestMapping(value = "/meeting/", method = RequestMethod.GET, produces = {
+			MediaType.APPLICATION_JSON_VALUE })
+	public List<Meeting> meetinginfo_w() {
+
+		return meetingrepository.findByStatus(Status.WAIT);
 	}
 
 	@RequestMapping(value = "/meeting/1", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE })
