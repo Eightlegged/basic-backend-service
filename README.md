@@ -70,3 +70,11 @@ Case|Return
 ---|---
 성공|{"result": "Success"}
 실패|{"result": "Failure-Unknown Email"}
+
+## Add Meeting
+### URI
+HTTP|URI
+---|---
+POST|/meeting/add/
+
+{"title":"weekly1", "comment":"weekly","content":"test123","date":"20170831","startTime":"10:00","status":"WAIT","partName":"Architecture","userList": [{"email":"heehouse1@gmail.com","userName": "Saeyoung"},{"email":"heehouse2@gmail.com","userName": "Faeyoung"}]}
