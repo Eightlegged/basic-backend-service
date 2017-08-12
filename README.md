@@ -91,7 +91,7 @@ Case|Return
 성공|{"result": "SUCCESS","MEETING_ID": "5"}
 
 
-##Get Meeting List(Meeting Status:WAIT)
+## Get Meeting List(Meeting Status:WAIT)
 ### URI
 HTTP|URI
 ---|---
@@ -135,7 +135,7 @@ ex)
     }
 }
 
-##Get Meeting List(Meeting Status:COMPLETE)
+## Get Meeting List(Meeting Status:COMPLETE)
 ### URI
 HTTP|URI
 ---|---
@@ -146,7 +146,7 @@ Case|Return
 ---|---
 성공|ArrayList<Meeting>
 
-##Start Meeting
+## Start Meeting
 ### URI
 HTTP|URI
 ---|---
