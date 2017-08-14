@@ -1,5 +1,5 @@
 applications:
 - name: smabackend
-  memory: 256MB
+  memory: 1024MB
   disk_quota: 256MB
   path: target/smabackend-0.0.1-SNAPSHOT.jar
