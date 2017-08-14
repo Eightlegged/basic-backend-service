@@ -1,0 +1,11 @@
+spring:
+  jpa:
+    show-sql: true
+    hibernate.ddl-auto: none
+    database: MYSQL
+
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://sl-us-south-1-portal.2.dbplayer.com:19794/base_info?autoReconnect=true&useSSL=false
+    username: admin
+    password: ZESZOQXERQZLPJTU

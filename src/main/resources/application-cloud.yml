@@ -1,0 +1,7 @@
+---
+
+spring:
+  datasource:
+    url: jdbc:mysql://sl-us-south-1-portal.2.dbplayer.com:19794/base_info
+    username: admin
+    password: ZESZOQXERQZLPJTU
