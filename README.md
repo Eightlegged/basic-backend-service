@@ -15,6 +15,11 @@ Spring Boot 기반의 프로젝트를 jar 파일로 패키징하여 PaaS상에 �
 해당 jar 파일이 있는 곳에서 
 java -jar 파일명.jar
 
+### 데이터베이스
+url=jdbc:mysql://localhost:3306/base_info
+username=root
+password=1234
+
 ### 기능 (추 후 추가 가능)
 > 회원서비스
 >> 회원가입\
