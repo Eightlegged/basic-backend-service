@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: ${vcap.services.sma-mysql.credentials.jdbcUrl}
+    username: ${vcap.services.sma-mysql.credentials.username}
+    password: ${vcap.services.sma-mysql.credentials.password}
+  session:
+    store-type: none
+  thymeleaf:
+    cache: false

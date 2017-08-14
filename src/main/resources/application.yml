@@ -1,0 +1,17 @@
+spring:
+  jpa:
+    hibernate.ddl-auto: none
+    generate-ddl: false
+    show-sql: true
+    database: mysql
+    
+  datasource:
+    url: jdbc:mysql://localhost:3306/base_info?useUnicode=true&charaterEncoding=utf-8&verifyServerCertificate=false&useSSL=true
+    username: root
+    password: 1234
+    driverClassName: com.mysql.jdbc.Driver
+    
+  session:
+    store-type: none
+  thymeleaf:
+    cache: false

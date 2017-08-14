@@ -22,10 +22,4 @@ public class SmabackendApplication {
 		SpringApplication.run(SmabackendApplication.class, args);
 	}
 
-	@Bean
-	public HibernateJpaSessionFactoryBean sessionFactory(EntityManagerFactory emf) {
-		HibernateJpaSessionFactoryBean factory = new HibernateJpaSessionFactoryBean();
-		factory.setEntityManagerFactory(emf);
-		return factory;
-	}
 }
