@@ -2,6 +2,6 @@
 
 spring:
   datasource:
-    url: jdbc:mysql://sl-us-south-1-portal.2.dbplayer.com:19794/base_info
+    url: jdbc:mysql://sl-aus-syd-1-portal.1.dblayer.com:16748/compose
     username: admin
-    password: ZESZOQXERQZLPJTU
+    password: DECBXHKNTXAGMXYC

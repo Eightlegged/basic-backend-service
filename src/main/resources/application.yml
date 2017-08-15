@@ -6,6 +6,6 @@ spring:
 
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://sl-us-south-1-portal.2.dbplayer.com:19794/base_info?autoReconnect=true&useSSL=false
+    url: jdbc:mysql://sl-aus-syd-1-portal.1.dblayer.com:16748/compose?autoReconnect=true&useSSL=true
     username: admin
-    password: ZESZOQXERQZLPJTU
+    password: DECBXHKNTXAGMXYC
