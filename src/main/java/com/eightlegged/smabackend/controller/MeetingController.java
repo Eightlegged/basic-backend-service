@@ -57,7 +57,7 @@ public class MeetingController {
 	}
 
 	@CrossOrigin
-	@RequestMapping(value = "/meeting/", method = RequestMethod.GET, produces = {
+	@RequestMapping(value = "/meeting", method = RequestMethod.GET, produces = {
 			MediaType.APPLICATION_JSON_VALUE })
 	public List<Meeting> meetinginfo_w() {
 
