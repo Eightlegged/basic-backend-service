@@ -68,10 +68,7 @@ password|User Password|String
 ### Response
 Case|Return
 ---|---
-성공|{
-    "result": "SUCCESS",
-    "LOG_IN_ID": "1"
-}
+성공|{"result": "SUCCESS","USER_ID": "1"}
 
   
 ## Add Meeting
