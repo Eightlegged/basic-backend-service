@@ -43,26 +43,26 @@ public class UserController {
 	
 	@CrossOrigin
 	@RequestMapping(
-			value="/user/all/{id}", method=RequestMethod.GET,
+			value="/user/all/{email}", method=RequestMethod.GET,
 			produces= {MediaType.APPLICATION_JSON_VALUE})
-	public List<Meeting> meetingList(@PathVariable Long id){
-		return userservice.findById(id).getMeetingList();
+	public List<Meeting> meetingList(@PathVariable String email){
+		return userservice.findByEmail(email).getMeetingList();
 	}
 	
 	@CrossOrigin
 	@RequestMapping(
-			value="/user/wait/{id}", method=RequestMethod.GET,
+			value="/user/wait/{email}", method=RequestMethod.GET,
 			produces= {MediaType.APPLICATION_JSON_VALUE})
-	public List<Meeting> meetingList_w(@PathVariable Long id){
-		return userservice.meetingList_w(userservice.findById(id));
+	public List<Meeting> meetingList_w(@PathVariable String email){
+		return userservice.meetingList_w(userservice.findByEmail(email));
 	}
 	
 	@CrossOrigin
 	@RequestMapping(
-			value="/user/end/{id}", method=RequestMethod.GET,
+			value="/user/end/{email}", method=RequestMethod.GET,
 			produces= {MediaType.APPLICATION_JSON_VALUE})
-	public List<Meeting> meetingList_c(@PathVariable Long id){
-		return userservice.meetingList_c(userservice.findById(id));
+	public List<Meeting> meetingList_c(@PathVariable String email){
+		return userservice.meetingList_c(userservice.findByEmail(email));
 	}
 	
 	@CrossOrigin
