@@ -42,7 +42,8 @@ public class MeetingController {
 	}
 
 	@CrossOrigin
-	@RequestMapping(value = "/meeting/info/{id}", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE })
+	@RequestMapping(value = "/meeting/info/{id}", method = RequestMethod.GET, produces = {
+			MediaType.APPLICATION_JSON_VALUE })
 	public Meeting meetinginfo(@PathVariable Long id) {
 
 		return meetingrepository.findOne(id);
@@ -57,8 +58,7 @@ public class MeetingController {
 	}
 
 	@CrossOrigin
-	@RequestMapping(value = "/meeting", method = RequestMethod.GET, produces = {
-			MediaType.APPLICATION_JSON_VALUE })
+	@RequestMapping(value = "/meeting", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE })
 	public List<Meeting> meetinginfo_w() {
 
 		return meetingrepository.findByStatus(Status.WAIT);
@@ -105,8 +105,7 @@ public class MeetingController {
 	}
 
 	@CrossOrigin
-	@RequestMapping(value = "/meeting/end/{id}", method = RequestMethod.POST, consumes = {
-			MediaType.APPLICATION_JSON_VALUE }, produces = { MediaType.APPLICATION_JSON_VALUE })
+	@RequestMapping(value = "/meeting/end/{id}", method = RequestMethod.POST)
 	public String completemeeting(@PathVariable Long id) {
 		return meetingservice.completeMeeting(id);
 	}
