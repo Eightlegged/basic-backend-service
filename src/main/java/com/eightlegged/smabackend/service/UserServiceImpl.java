@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.eightlegged.smabackend.entity.Meeting;
+import com.eightlegged.smabackend.entity.Partname;
 import com.eightlegged.smabackend.entity.Role;
 import com.eightlegged.smabackend.entity.Status;
 import com.eightlegged.smabackend.entity.User;
@@ -52,6 +53,7 @@ public class UserServiceImpl implements UserService {
 			user.setPassword(password);
 			user.setRole(Role.USER); // Master?
 			// Role 입력받을 경우 - user.setRole(Role);
+			user.setPartName(Partname.Architecture);
 			userRepository.saveAndFlush(user);
 			logger.info("User Created! User ID: " + user.getId());
 			return "{\"result\": \"SUCCESS\", \"USER_ID\":\"" + user.getId() + "\"}";

@@ -121,4 +121,12 @@ public class User implements Serializable {
 	public void setMeetingList(List<Meeting> meetingList) {
 		this.meetingList = meetingList;
 	}
+	
+	public Partname getPartName() {
+		return partname;
+	}
+	
+	public void setPartName(Partname partname) {
+		this.partname = partname;
+	}
 }
