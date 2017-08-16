@@ -73,7 +73,7 @@ public class UserServiceImpl implements UserService {
 		}
 
 		if (user.getPassword().equals(password))
-			return "{\"result\": \"SUCCESS\"}";
+			return "{\"result\": \"SUCCESS\",\"LOG_IN_ID\":\""+ user.getId() +"\"}";
 		return "{\"result\":\"FAIL\"}";
 	}
 
