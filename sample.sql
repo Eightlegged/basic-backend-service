@@ -24,11 +24,13 @@ CREATE TABLE `meeting_serv` (
   PRIMARY KEY (`meeting_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
-CREATE TABLE `meeting_checklist` (
-  `meeting_meeting_id` bigint(20) NOT NULL,
-  `checklist` varchar(255) DEFAULT NULL,
-  KEY `FKbecyby7w5870yugo9nd9xtbjm` (`meeting_meeting_id`),
-  CONSTRAINT `FKbecyby7w5870yugo9nd9xtbjm` FOREIGN KEY (`meeting_meeting_id`) REFERENCES `meeting_serv` (`meeting_id`)
+CREATE TABLE `user_mt_connect` (
+  `user_id` bigint(20) NOT NULL,
+  `meeting_id` bigint(20) NOT NULL,
+  KEY `FK3k5r4e90m3e0u6uxmtfvel3w5` (`meeting_id`),
+  KEY `FK5q473qsmd78i32ve9c7839cpx` (`user_id`),
+  CONSTRAINT `FK3k5r4e90m3e0u6uxmtfvel3w5` FOREIGN KEY (`meeting_id`) REFERENCES `meeting_serv` (`meeting_id`),
+  CONSTRAINT `FK5q473qsmd78i32ve9c7839cpx` FOREIGN KEY (`user_id`) REFERENCES `user_info` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
