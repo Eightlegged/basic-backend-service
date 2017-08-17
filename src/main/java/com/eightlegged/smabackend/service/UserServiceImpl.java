@@ -53,7 +53,11 @@ public class UserServiceImpl implements UserService {
 			user.setPassword(password);
 			user.setRole(Role.USER); // Master?
 			// Role 입력받을 경우 - user.setRole(Role);
+			if(partname != null) {
 			user.setPartName(partname);
+			}else {
+				user.setPartName(Partname.Communication);
+			}
 			userRepository.saveAndFlush(user);
 			logger.info("User Created! User ID: " + user.getId());
 			return "{\"result\": \"SUCCESS\", \"USER_ID\":\"" + user.getId() + "\"}";
