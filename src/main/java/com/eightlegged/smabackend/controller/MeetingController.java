@@ -68,28 +68,28 @@ public class MeetingController {
 	@RequestMapping(value = "/meeting/1", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE })
 	public List<Meeting> meeting_part1() {
 
-		return meetingrepository.findByPartname(Partname.Architecture);
+		return meetingrepository.findByPartname(Partname.Communication);
 	}
 
 	@CrossOrigin
 	@RequestMapping(value = "/meeting/2", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE })
 	public List<Meeting> meeting_part2() {
 
-		return meetingrepository.findByPartname(Partname.Engineering);
+		return meetingrepository.findByPartname(Partname.Distribution);
 	}
 
 	@CrossOrigin
 	@RequestMapping(value = "/meeting/3", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE })
 	public List<Meeting> meeting_part3() {
 
-		return meetingrepository.findByPartname(Partname.RnD);
+		return meetingrepository.findByPartname(Partname.Manufactoring);
 	}
 
 	@CrossOrigin
 	@RequestMapping(value = "/meeting/4", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE })
 	public List<Meeting> meeting_part4() {
 
-		return meetingrepository.findByPartname(Partname.QA);
+		return meetingrepository.findByPartname(Partname.VDI);
 	}
 
 	@CrossOrigin
