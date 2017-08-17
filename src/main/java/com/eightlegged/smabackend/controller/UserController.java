@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.eightlegged.smabackend.entity.Meeting;
 import com.eightlegged.smabackend.entity.User;
+import com.eightlegged.smabackend.repository.UserRepository;
 import com.eightlegged.smabackend.service.UserService;
 
 /**
@@ -29,6 +30,9 @@ public class UserController {
 	@Autowired
 	UserService userservice;
 	
+	@Autowired
+	UserRepository userreposi;
+	
 	@CrossOrigin
 	@RequestMapping(
 			value="/user/add", method=RequestMethod.POST, 
@@ -38,7 +42,7 @@ public class UserController {
 		System.out.println("NAME:" + user.getUserName());
 		System.out.println("E-Mail: " + user.getEmail());
 		System.out.println("Pssword: " + user.getPassword());
-		return userservice.createUser(user.getUserName(), user.getEmail(),user.getPassword());
+		return userservice.createUser(user.getUserName(), user.getEmail(),user.getPassword(),user.getPartName());
 	}
 	
 	@CrossOrigin
@@ -48,7 +52,13 @@ public class UserController {
 	public List<Meeting> meetingList(@PathVariable Long id){
 		return userservice.findById(id).getMeetingList();
 	}
-	
+	@CrossOrigin
+	@RequestMapping(
+			value="/user/all", method=RequestMethod.GET,
+			produces= {MediaType.APPLICATION_JSON_VALUE})
+	public List<User> uList(){
+		return userreposi.findAll();
+	}
 	@CrossOrigin
 	@RequestMapping(
 			value="/user/wait/{id}", method=RequestMethod.GET,

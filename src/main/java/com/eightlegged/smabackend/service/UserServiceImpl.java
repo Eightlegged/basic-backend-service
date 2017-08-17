@@ -44,7 +44,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public String createUser(String userName, String email, String password) {
+	public String createUser(String userName, String email, String password, Partname partname) {
 		// Role 입력 받을 경우 - (String userName, String email, String Password, Role Role)
 		if (findByEmail(email) == null && findByUsername(userName) == null) {
 			User user = new User();
@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService {
 			user.setPassword(password);
 			user.setRole(Role.USER); // Master?
 			// Role 입력받을 경우 - user.setRole(Role);
-			user.setPartName(Partname.Architecture);
+			user.setPartName(partname);
 			userRepository.saveAndFlush(user);
 			logger.info("User Created! User ID: " + user.getId());
 			return "{\"result\": \"SUCCESS\", \"USER_ID\":\"" + user.getId() + "\"}";
