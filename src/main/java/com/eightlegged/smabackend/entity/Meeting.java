@@ -62,9 +62,9 @@ public class Meeting {
 	@Enumerated(EnumType.STRING)
 	private Partname partname;
 	
-	@ElementCollection
-	@Column(name = "checklist")
-	private List<String> checklist = new ArrayList<>();
+	@OneToMany
+	@JoinColumn(name="cl_mt_id")
+	private List<CheckList> checkList = new ArrayList<>();
 
 	public Long getId() {
 		return id;
@@ -146,14 +146,14 @@ public class Meeting {
 	public void setStatus(Status status) {
 		this.status = status;
 	}
-	
+
 	@JsonProperty(access = JsonProperty.Access.AUTO)
-	public List<String> getCheckList(){
-		return checklist;
+	public List<CheckList> getCheckList(){
+		return checkList;
 	}
 	
-	public void setChechList(List<String> checklist) {
-		this.checklist = checklist;
+	public void setCheck_List(List<CheckList> checklist) {
+		this.checkList = checklist;
 	}
 
 }

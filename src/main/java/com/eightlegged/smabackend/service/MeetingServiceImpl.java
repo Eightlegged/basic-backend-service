@@ -9,10 +9,12 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.eightlegged.smabackend.entity.CheckList;
 import com.eightlegged.smabackend.entity.Meeting;
 import com.eightlegged.smabackend.entity.Partname;
 import com.eightlegged.smabackend.entity.Status;
 import com.eightlegged.smabackend.entity.User;
+import com.eightlegged.smabackend.repository.CheckListRepository;
 import com.eightlegged.smabackend.repository.MeetingRepository;
 import com.eightlegged.smabackend.repository.UserRepository;
 
@@ -27,14 +29,27 @@ public class MeetingServiceImpl implements MeetingService {
 	@Autowired
 	private UserRepository userRepository;
 
+	@Autowired
+	private CheckListRepository clRepository;
+
 	@Override
 	public String createMeeting(Meeting meeting) {
 
-		meetingRepository.save(meeting);
 
+
+		System.out.println(meeting.getCheckList().size());
+		for (int i = 0; i < meeting.getCheckList().size(); i++) {
+			CheckList ch_list = meeting.getCheckList().get(i);
+			ch_list.setMeetingId(meeting.getId());
+			clRepository.save(ch_list);
+			
+			System.out.println(clRepository.findAll());
+		}
+		meetingRepository.save(meeting);
+		System.out.println(meeting.getUserList().size());
 		for (int i = 0; i < meeting.getUserList().size(); i++) {
-			System.out.println(meeting.getUserList().get(i).getName());
-			setUser(meeting.getUserList().get(i).getName(), meeting.getId());
+			System.out.println(meeting.getUserList().get(i).getUserName());
+			setUser(meeting.getUserList().get(i).getUserName(), meeting.getId());
 		}
 
 		meetingRepository.save(meeting);
@@ -52,11 +67,9 @@ public class MeetingServiceImpl implements MeetingService {
 			meetingRepository.save(meeting);
 			logger.info("Meeting Finished! Meeting ID: " + meetingRepository.findOne(id).getId());
 
-			return "{\"result\": \"START\", \"MEETING_STATUS\":\"" + meetingRepository.findOne(id).getStatus()
-					+ "\"}";
+			return "{\"result\": \"START\", \"MEETING_STATUS\":\"" + meetingRepository.findOne(id).getStatus() + "\"}";
 		}
-		return "{\"result\": \"FAIL\", \"MEETING_STATUS\":\"" + "MEETING_DOES_NOT_EXIST"
-				+ "\"}";
+		return "{\"result\": \"FAIL\", \"MEETING_STATUS\":\"" + "MEETING_DOES_NOT_EXIST" + "\"}";
 	}
 
 	@Override
@@ -71,10 +84,8 @@ public class MeetingServiceImpl implements MeetingService {
 			return "{\"result\": \"DELETED\", \"MEETING_STATUS\":\"" + meetingRepository.findOne(id).getStatus()
 					+ "\"}";
 		}
-		return "{\"result\": \"FAIL\", \"MEETING_STATUS\":\"" + "MEETING_DOES_NOT_EXIST"
-				+ "\"}";
+		return "{\"result\": \"FAIL\", \"MEETING_STATUS\":\"" + "MEETING_DOES_NOT_EXIST" + "\"}";
 	}
-
 
 	@Override
 	public String completeMeeting(Long id) {
@@ -88,8 +99,7 @@ public class MeetingServiceImpl implements MeetingService {
 			return "{\"result\": \"FINISHED\", \"MEETING_STATUS\":\"" + meetingRepository.findOne(id).getStatus()
 					+ "\"}";
 		}
-		return "{\"result\": \"FAIL\", \"MEETING_STATUS\":\"" + "MEETING_DOES_NOT_EXIST"
-				+ "\"}";
+		return "{\"result\": \"FAIL\", \"MEETING_STATUS\":\"" + "MEETING_DOES_NOT_EXIST" + "\"}";
 	}
 
 	@Override
