@@ -53,9 +53,9 @@ public class UserServiceImpl implements UserService {
 			user.setPassword(password);
 			user.setRole(Role.USER); // Master?
 			// Role 입력받을 경우 - user.setRole(Role);
-			if(partname != null) {
-			user.setPartName(partname);
-			}else {
+			if (partname != null) {
+				user.setPartName(partname);
+			} else {
 				user.setPartName(Partname.Communication);
 			}
 			userRepository.saveAndFlush(user);
@@ -79,7 +79,8 @@ public class UserServiceImpl implements UserService {
 		}
 
 		if (user.getPassword().equals(password))
-			return "{\"result\": \"SUCCESS\",\"USER_ID\":\""+ user.getId() +"\"}";
+			return "{\"result\": \"SUCCESS\",\"USER_ID\":\"" + user.getId() + "\"" + ",\"USER_NAME\":\""
+					+ user.getName() + "\",\"USER_PART\":\"" + user.getPartName() + "\"" + "}";
 		return "{\"result\":\"FAIL\"}";
 	}
 
