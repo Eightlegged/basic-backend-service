@@ -86,7 +86,7 @@ content|Meeting Content|String
 date|Meeting Date|date(YYYY-MM-DD)
 startTime|Start Time|Time(HH:MM)
 status|Meeting Status|Status(WAIT or COMPLETE)
-partName|Part Name|Partname(Architecture, Engineering, RnD or QA)
+partName|Part Name|Partname(Communication, Distribution, Manufactoring or VDI)
 userList|User List|ArrayList<User>
 checkList|Check List|ArrayList<CheckList>
 
