@@ -239,6 +239,13 @@ Parameter|Parameter명|Data Type
 ---|---|---
 id|Meeting id|Long
 
+### Parameter(Request Body)
+Parameter|Parameter명|Data Type
+---|---|---
+checkList|Check List|CheckList
+ex)
+{"checkList": [{"id":"7","item":"check33","checked":"true"},{"id":"8","item":"check244","checked":"true"}]}
+
 ### Response
 Case|Return
 ---|---
