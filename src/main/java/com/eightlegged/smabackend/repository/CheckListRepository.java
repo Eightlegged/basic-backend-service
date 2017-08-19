@@ -5,8 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.eightlegged.smabackend.entity.CheckList;
 
-
 @Repository
 public interface CheckListRepository extends JpaRepository<CheckList, Long> {
-
+	CheckList findByItem(String item);
 }

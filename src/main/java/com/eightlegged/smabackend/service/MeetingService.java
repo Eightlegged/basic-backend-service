@@ -14,7 +14,7 @@ public interface MeetingService {
 
 	String startMeeting(Long id);
 
-	String completeMeeting(Long id);
+	String completeMeeting(Long id, Meeting meeting);
 	
 	void setUser(String email, Long id);
 

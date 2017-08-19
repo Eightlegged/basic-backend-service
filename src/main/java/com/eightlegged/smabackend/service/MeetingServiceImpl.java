@@ -35,14 +35,11 @@ public class MeetingServiceImpl implements MeetingService {
 	@Override
 	public String createMeeting(Meeting meeting) {
 
-
-
-		System.out.println(meeting.getCheckList().size());
 		for (int i = 0; i < meeting.getCheckList().size(); i++) {
 			CheckList ch_list = meeting.getCheckList().get(i);
 			ch_list.setMeetingId(meeting.getId());
 			clRepository.save(ch_list);
-			
+
 			System.out.println(clRepository.findAll());
 		}
 		meetingRepository.save(meeting);
@@ -88,11 +85,16 @@ public class MeetingServiceImpl implements MeetingService {
 	}
 
 	@Override
-	public String completeMeeting(Long id) {
+	public String completeMeeting(Long id, Meeting mt) {
 		// TODO Auto-generated method stub
 		Meeting meeting = meetingRepository.findOne(id);
 		if (meeting != null) {
 			meeting.setStatus(Status.COMPLETE);
+			for (int i = 0; i < mt.getCheckList().size(); i++) {
+				CheckList cl = clRepository.findOne(mt.getCheckList().get(i).getId());
+				cl.setChecked(mt.getCheckList().get(i).getChecked());
+				clRepository.save(cl);
+			}
 			meetingRepository.save(meeting);
 			logger.info("Meeting Finished! Meeting ID: " + meetingRepository.findOne(id).getId());
 
@@ -158,4 +160,5 @@ public class MeetingServiceImpl implements MeetingService {
 		List<Meeting> meeting = meetingRepository.findByPartname(partname);
 		return meeting;
 	}
+
 }

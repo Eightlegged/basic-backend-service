@@ -106,8 +106,8 @@ public class MeetingController {
 
 	@CrossOrigin
 	@RequestMapping(value = "/meeting/end/{id}", method = RequestMethod.POST)
-	public String completemeeting(@PathVariable Long id) {
-		return meetingservice.completeMeeting(id);
+	public String completemeeting(@PathVariable Long id, @RequestBody Meeting meeting) {
+		return meetingservice.completeMeeting(id, meeting);
 	}
 
 }
