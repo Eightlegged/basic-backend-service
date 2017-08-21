@@ -131,16 +131,14 @@ ex)
                 "email": "heehouse1@gmail.com",
                 "userName": "Saeyoung",
                 "password": "test123",
-                "role": "USER",
-                "name": "Saeyoung"
+                "role": "USER"
             },
             {
                 "id": 2,
                 "email": "heehouse2@gmail.com",
                 "userName": "Faeyoung",
                 "password": "test123",
-                "role": "USER",
-                "name": "Faeyoung"
+                "role": "USER"
             }
         ],
         "status": "WAIT",
